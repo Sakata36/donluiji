@@ -1,0 +1,41 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("Welcome to the Dice Game!");
+
+        Random dice = new Random();
+
+        List<int> points = new List<int>();
+        List<int> bonuspoints = new List<int>();
+
+        int tries = 0;
+
+        while (tries < 3)
+        {
+            int roll = dice.Next(1, 7);
+            Console.WriteLine(roll);
+
+            points.Add(roll);
+            tries++;
+
+            // Provide options after each roll
+            DisplayOptions();
+            string option = Console.ReadLine().ToLower();
+
+            // Use switch statement for different options
+            switch (option)
+            {
+                case "score":
+                    Console.WriteLine($"Current Score: {points.Sum() + bonuspoints.Sum()}");
+                    break;
+
+                case "rules":
+                    DisplayRules();
+                    break;
+
+                case
